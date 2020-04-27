@@ -1,7 +1,1 @@
-﻿  Python_c.cpp
-  Создание кода
-  2 of 3 functions (66.7%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
-  Создание кода завершено
-  Python_c.vcxproj -> D:\work\Python_C\Python_c\Release\Python_c.exe
+﻿LINK : fatal error LNK1104: не удается открыть файл "D:\work\Python_C\Python_c\Release\Python_c.exe"

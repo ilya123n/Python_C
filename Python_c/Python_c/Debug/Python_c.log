@@ -1,3 +1,4 @@
 ﻿  Python_c.cpp
-d:\work\python_c\python_c\python_c\python_c.cpp(17): warning C4101: pValue: неиспользованная локальная переменная
+d:\work\python_c\python_c\python_c\python_c.cpp(107): warning C4018: <: несоответствие типов со знаком и без знака
+d:\work\python_c\python_c\python_c\python_c.cpp(88): warning C4101: pFunc: неиспользованная локальная переменная
 LINK : fatal error LNK1104: не удается открыть файл "python38_d.lib"
