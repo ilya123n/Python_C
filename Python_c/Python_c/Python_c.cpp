@@ -77,7 +77,7 @@ python_clear() {
 void python_class(double* data, int size) {
 
 	PyObject *pClass = PyDict_GetItemString(pDict, (const char *) "MathStat");
-		
+	
 	PyObject * pArgs = NULL, *pVal = NULL, *pInstance = NULL;
 
 	pArgs = PyTuple_New(size);
@@ -87,15 +87,21 @@ void python_class(double* data, int size) {
 	if(pArgs != NULL) {
 		//pVal = PyObject_CallObject(pObjct, pArgs);
 		pInstance = PyObject_CallObject(pClass, pArgs);
-		pVal = PyObject_CallMethod(pInstance, (char*) "mean", NULL);
+		pVal = PyObject_CallMethod(pInstance, (char*) "all", NULL);
 		if (pVal != NULL) {
-			//double *ptrres = new double[PyTuple_Size(pVal)];
-			// вывод результатов из кортежа в массив
-			for (int i = 0; i < PyTuple_Size(pVal); i++) {
-				cout << PyFloat_AsDouble(PyTuple_GetItem(pVal, i)) << " ";
+			for (int i = 0; i < size; i++) {
+				cout << (data)[i] << " ";
 			}
+			// вывод результатов из кортежа
+			cout<< endl << "mean = " <<  PyFloat_AsDouble(PyTuple_GetItem(pVal, 0)) <<  endl << "variance = " << PyFloat_AsDouble(PyTuple_GetItem(pVal, 1)) << endl;
+			Py_XDECREF(pClass);
+			Py_XDECREF(pVal);
+			Py_XDECREF(pArgs);
 		}
 	}
+	Py_XDECREF(pClass);
+	Py_XDECREF(pVal);
+	Py_XDECREF(pArgs);
 }
 
 void python_fun_sq(double number) {
@@ -163,16 +169,12 @@ int main() {
 	python_fun_array(n);
 
 	python_clear();
-
-
-	//if (!python_init("test_class")) {
-	//	puts("python_init error");
-	//	return -1;
-	//}
-
-	//python_class(ptrarr, size);
-
-	//python_clear();
+	
+	cout << endl << "Test Class:" << endl;
+	
+	python_init("test_class");
+	python_class(ptrarr, size);
+	python_clear();
 
 	return 0;
 }
