@@ -26,7 +26,7 @@ PyObject * python_init(const char str[]) {
 		sys = PyImport_ImportModule("sys");
 		sys_path = PyObject_GetAttrString(sys, "path");
 		// Путь до наших исходников python
-		folder_path = PyUnicode_FromString((const char*) "D://work//Python_C//python-cript");
+		folder_path = PyUnicode_FromString((const char*) "./");
 		PyList_Append(sys_path, folder_path);
 
 		// Создание Unicode объекта из UTF-8 строки
